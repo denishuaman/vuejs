@@ -40,10 +40,26 @@
                 </li>
             </ol>
         </div>
+        <hr>
         <!--Event listener-->
         <div id="app-5">
             <p>{{message5}}</p>
             <button v-on:click="reverseMessage" class="btn btn-outline-primary">Reverse Message</button>
+        </div>
+        <hr>
+        <!--Model-->
+        <div id="app-6">
+            <p>{{message6}}</p>
+            <input v-model="message6">
+        </div>
+        <hr>
+        <!--Component-->
+        <div id="app-7">
+            <b>Componentes</b>
+            <ol>
+                <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+                </todo-item>
+            </ol>
         </div>
     </div>
 </body>
@@ -96,6 +112,30 @@
                 this.message5 = this.message5.split('').reverse().join('')
             }
         },
+    })
+    var app6 = new Vue({
+        el: '#app-6',
+        data() {
+            return {
+                message6: 'Hello Vue'
+            }
+        }
+    })
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+    var app7 = new Vue({
+        el: '#app-7',
+        data() {
+            return {
+                groceryList: [
+                    { id:0, text:'item1' },
+                    { id:1, text:'item2' },
+                    { id:2, text:'item3' },
+                ]
+            }
+        }
     })
 </script>
 </html>
