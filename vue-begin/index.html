@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <!-- llamada a mensaje general-->
+        <div id="app">
+            <b>Mensaje general: </b>
+            {{message}}
+        </div>
+        <hr>
+        <!-- Mensaje tooltip-->
+        <div id="app-2">
+            <b>Mensaje tooltip:</b>
+            <span v-bind:title="message2">
+                Hover your mouse over me for a few seconds
+                to see my dynamically bound title!
+            </span>
+        </div>
+        <hr>
+        <!-- condicionales -->
+        <div id="app-3">
+            <b>Condicionales:</b>
+            <span v-if="seen">Visible field</span>
+        </div>
+        <hr>
+        <!--Directiva for-->
+        <div id="app-4">
+            <b>Directiva For</b>
+            <ol>
+                <li v-for="todo in todos">
+                    {{todo.text}}
+                </li>
+            </ol>
+        </div>
+        <!--Event listener-->
+        <div id="app-5">
+            <p>{{message5}}</p>
+            <button v-on:click="reverseMessage" class="btn btn-outline-primary">Reverse Message</button>
+        </div>
+    </div>
+</body>
+<script>
+    var app=new Vue({
+        el: '#app',
+        data() {
+            return {
+                message: 'Hello Vue!!!!'
+            }
+        },
+    })
+    var app2=new Vue({
+        el: '#app-2',
+        data() {
+            return {
+                message2: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        }
+    })
+    var app=new Vue({
+        el: '#app-3',
+        data() {
+            return {
+                seen: true
+            }
+        }
+    })
+    var app4 = new Vue({
+        el: '#app-4',
+        data() {
+            return {
+                todos: [
+                    {text:'Learn JavaScript'},
+                    {text: 'Learn Vue'},
+                    {text: 'Build something awesome'}
+                ]
+            }
+        }
+    })
+    var app5 = new Vue({
+        el: '#app-5',
+        data() {
+            return {
+                message5: 'Hello Vue.js'
+            }
+        },
+        methods: {
+            reverseMessage: function() {
+                this.message5 = this.message5.split('').reverse().join('')
+            }
+        },
+    })
+</script>
+</html>
