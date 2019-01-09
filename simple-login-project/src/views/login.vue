@@ -1,9 +1,12 @@
 <template>
     <div id="login">
         <h1>Login</h1>
-        <input type="text" class="form-control" name="username" v-model="input.username" placeholder="Usuario">
-        <input type="password" name="password" v-model="input.password" placeholder="Contraseña">
-        <button type="button" v-on:click="login()">Login</button>
+        <input type="text" class="form-control" name="username" v-model="input.username" placeholder="Usuario" autocomplete="off">
+        <input type="password" class="form-control" name="password" v-model="input.password" placeholder="Contraseña" autocomplete="off">
+        <hr>
+        <div align="center">
+            <button type="button" v-on:click="login()" class="btn btn-primary">Iniciar sesión</button>
+        </div>
     </div>
 </template>
 <script>
