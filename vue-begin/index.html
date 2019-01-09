@@ -9,57 +9,72 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <!-- llamada a mensaje general-->
-        <div id="app">
-            <b>Mensaje general: </b>
-            {{message}}
-        </div>
-        <hr>
-        <!-- Mensaje tooltip-->
-        <div id="app-2">
-            <b>Mensaje tooltip:</b>
-            <span v-bind:title="message2">
-                Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
-            </span>
-        </div>
-        <hr>
-        <!-- condicionales -->
-        <div id="app-3">
-            <b>Condicionales:</b>
-            <span v-if="seen">Visible field</span>
-        </div>
-        <hr>
-        <!--Directiva for-->
-        <div id="app-4">
-            <b>Directiva For</b>
-            <ol>
-                <li v-for="todo in todos">
-                    {{todo.text}}
-                </li>
-            </ol>
-        </div>
-        <hr>
-        <!--Event listener-->
-        <div id="app-5">
-            <p>{{message5}}</p>
-            <button v-on:click="reverseMessage" class="btn btn-outline-primary">Reverse Message</button>
-        </div>
-        <hr>
-        <!--Model-->
-        <div id="app-6">
-            <p>{{message6}}</p>
-            <input v-model="message6">
-        </div>
-        <hr>
-        <!--Component-->
-        <div id="app-7">
-            <b>Componentes</b>
-            <ol>
-                <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
-                </todo-item>
-            </ol>
+    <div class="container" style="padding:5%">
+        <div class="card">
+            <div class="card-header">
+                Ejemplos
+            </div>
+            <!-- llamada a mensaje general-->
+            <div class="card">
+                <div id="app" class="card-body">
+                    <h5 class="card-title">Mensaje general: </h5>
+                    <p class="card-text">{{message}}</p>
+                </div>
+            </div>
+            <!-- Mensaje tooltip-->
+            <div class="card">
+                <div id="app-2" class="card-body">
+                    <h5 class="card-title">Mensaje tooltip:</h5>
+                    <span v-bind:title="message2">
+                        Hover your mouse over me for a few seconds
+                        to see my dynamically bound title!
+                    </span>
+                </div>
+            </div>
+            <!-- condicionales -->
+            <div class="card">
+                <div id="app-3" class="card-body">
+                    <h5 class="card-title">Condicionales:</h5>
+                    <span v-if="seen">Visible field</span>
+                </div>
+            </div>
+            <!--Directiva for-->
+            <div class="card">
+                <div id="app-4" class="card-body">
+                    <h5 class="card-title">Directiva For</h5>
+                    <ol>
+                        <li v-for="todo in todos">
+                            {{todo.text}}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!--Event listener-->
+            <div class="card">
+                <div id="app-5" class="card-body">
+                    <h5 class="card-title">Event listener</h5>
+                    <p>{{message5}}</p>
+                    <button v-on:click="reverseMessage" class="btn btn-outline-primary">Reverse Message</button>
+                </div>
+            </div>
+            <!--Model-->
+            <div class="card">
+                <div id="app-6" class="card-body">
+                    <h5 class="card-title">Model</h5>
+                    <p>{{message6}}</p>
+                    <input v-model="message6">
+                </div>
+            </div>
+            <!--Component-->
+            <div class="card">
+                <div id="app-7" class="card-body">
+                    <h5 class="card-title">Componentes</h5>
+                    <ol>
+                        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+                        </todo-item>
+                    </ol>
+                </div>
+            </div>
         </div>
     </div>
 </body>
