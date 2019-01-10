@@ -1,5 +1,5 @@
 <template>
-    <div id="secure" >
+    <div id="secure">
         <h1>Área de seguridad</h1>
         <p>
             Inicio de sesión exitoso

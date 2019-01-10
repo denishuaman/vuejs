@@ -1,8 +1,8 @@
 <template>
     <div id="login">
         <h1>Login</h1>
-        <input type="text" class="form-control" name="username" v-model="input.username" placeholder="Usuario" autocomplete="off">
-        <input type="password" class="form-control" name="password" v-model="input.password" placeholder="Contraseña" autocomplete="off">
+        <input type="text" class="form-control" name="usuario" v-model="input.usuario" placeholder="Usuario" autocomplete="off">
+        <input type="password" class="form-control" name="contrasena" v-model="input.contrasena" placeholder="Contraseña" autocomplete="off">
         <hr>
         <div align="center">
             <button type="button" v-on:click="login()" class="btn btn-primary">Iniciar sesión</button>
@@ -10,30 +10,59 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
+import sha256 from 'sha256';
+
 export default {
     name: "Login",
     data() {
         return {
             input: {
-                username: "",
-                password: ""
+                usuario: "",
+                contrasena: ""
+            },
+            responseData: {
+                idUsuario: 0,
+                tTipoUsuario: {
+                    idTipoUsuario: 0,
+                    descripcion: ""
+                },
+                usuario: "",
+                contrasena: "",
+                codigoUsuario: "",
+                nombres: "",
+                apellidos: "",
+                correo: "",
+                estado: 0
             }
-        }
+        };
     },
     methods: {
         login() {
-            if(this.input.username!="" && this.input.password!="") {
-                if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                    this.$emit('authenticated', true);
-                    this.$router.replace({name: "secure"});
-                } else {
-                    console.log("Usuario y/o contraseña incorrecta");
-                    alert("Usuario y/o contraseña incorrecta");
-                }
+            console.log("Entrada", this.input);
+            if(this.input.usuario!="" && this.input.contrasena!="") {
+                this.input.contrasena = sha256(this.input.contrasena);
+                axios({
+                    method: "POST",
+                    url: "http://localhost:8080/login-service/api/login/iniciar-sesion",
+                    data: this.input,
+                    headers: { "content-type": "application/json" }
+                }).then(
+                    result => {
+                        this.responseData=result.data;
+                        console.info("Response", this.responseData);
+                        this.$emit('authenticated', true);
+                        this.$emit('datausuario.usuario', this.responseData.usuario);
+                        this.$router.replace({name: "secure"});
+                    },
+                    error => {
+                        console.error("Error", error);
+                    }
+                );
             } else {
                 console.log("No ha ingresado usuario y contraseña");
                 alert("Debe ingresar usuario y contraseña");
-            }
+            };
         }
     }
 };

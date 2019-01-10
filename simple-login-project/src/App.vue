@@ -16,15 +16,26 @@ export default {
   data() {
     return {
       authenticated: false,
-      mockAccount: {
-        username: "dgha",
-        password: "123456"
+      datausuario: {
+        idUsuario: 0,
+        tTipoUsuario: {
+          idTipoUsuario: 0,
+          descripcion: ""
+        },
+        usuario: "",
+        contrasena: "",
+        codigoUsuario: "",
+        nombres: "",
+        apellidos: "",
+        correo: "",
+        estado: 0
       }
     };
   },
   mounted() {
     if (!this.authenticated) {
       console.log("Usuario no autenticado");
+      console.log("Redireccionando al login");
       this.$router.replace({ name: "login" });
     }
   },
