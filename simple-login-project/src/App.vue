@@ -1,7 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" class="container" style="padding:10%">
     <div id="nav">
-      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()">
+        <button type="button" class="btn btn-secondary" v-if="authenticated">
+          Cerrar sesión
+        </button>
+      </router-link>
     </div>
     <router-view @authenticated="setAuthenticated"></router-view>
   </div>
@@ -45,7 +49,7 @@ h1 {
   margin-top: 0;
 }
 #app {
-  width: 1024px;
+  /* width: 1024px; */
   margin: auto;
 }
 </style>

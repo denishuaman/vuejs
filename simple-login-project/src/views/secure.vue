@@ -1,8 +1,8 @@
 <template>
-    <div id="secure">
-        <h1>Secure Area</h1>
+    <div id="secure" >
+        <h1>Área de seguridad</h1>
         <p>
-            This is a secure area
+            Inicio de sesión exitoso
         </p>
     </div>
 </template>

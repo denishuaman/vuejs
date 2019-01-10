@@ -40,11 +40,12 @@ export default {
 </script>
 <style scoped>
 #login {
-  width: 500px;
+  width: 70%;
   border: 1px solid #cccccc;
   background-color: #ffffff;
   margin: auto;
-  margin-top: 200px;
-  padding: 20px;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding: 5%;
 }
 </style>
