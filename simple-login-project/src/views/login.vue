@@ -12,6 +12,7 @@
 <script>
 import axios from 'axios';
 import sha256 from 'sha256';
+import {URL_LOGIN_INICIAR_SESION} from '../constants/constants.js';
 
 export default {
     name: "Login",
@@ -39,12 +40,12 @@ export default {
     },
     methods: {
         login() {
-            console.log("Entrada", this.input);
             if(this.input.usuario!="" && this.input.contrasena!="") {
                 this.input.contrasena = sha256(this.input.contrasena);
+                console.log("Entrada", this.input);
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/login-service/api/login/iniciar-sesion",
+                    url: URL_LOGIN_INICIAR_SESION,
                     data: this.input,
                     headers: { "content-type": "application/json" }
                 }).then(
